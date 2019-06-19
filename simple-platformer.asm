@@ -9,21 +9,21 @@
   .inesmir 1    ; Defines VRAM mirroring of banks
 
   .bank 0
-  .org $C000
+  .org $C000 ;game logic memory allocation 8kb
 
-RESET:
+RESET: ; This is interupt only gets called once at on power on and reset
 
-InfiniteLoop:
+InfiniteLoop: ;This is an infinite game loop
   JMP InfiniteLoop
 
-NMI:
+NMI: ; This gets called every grame. 60 fps
   RTI
 
   .bank 1
   .org $FFFA
-  .dw NMI
-  .dw RESET
+  .dw NMI ;allocation for the NMI interrupt
+  .dw RESET ;allocation for the NMI interrupt
   .dw 0
 
   .bank 2
-  .org $0000
+  .org $0000 ; this bank will be used for future chr data

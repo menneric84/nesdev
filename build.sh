@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./nesasm-mac/nesasm nes-tutorial.asm
+./nesasm simple-platformer.asm
